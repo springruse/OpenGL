@@ -24,20 +24,31 @@ int main(int argc, char* argv[]) {
     colors.push_back(neu::vec3(0, 0, 1));
 
 
-    GLuint vbo;
-	glGenBuffers(1, &vbo);
+    GLuint vbo[2];
+	glGenBuffers(1, vbo);
     
 	//vertex buffer position
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(neu::vec3) * points.size(), points.data(), GL_STATIC_DRAW );
+
+	//vertex buffer color
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(neu::vec3) * colors.size(), colors.data(), GL_STATIC_DRAW);
 
     // vertex array
     GLuint vao;
     glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
 
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    // vertex position
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(0);
+
+	// vertex color
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+    glEnableVertexAttribArray(1);
 
     // vertex shader
     std::string vs_source;
@@ -48,9 +59,64 @@ int main(int argc, char* argv[]) {
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
     glShaderSource(vertexShader, 1, &vs_cstr, NULL);
+
+    int success;
+    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        std::string infoLog(512, '\0');  // pre-allocate space
+        GLsizei length;
+        glGetShaderInfoLog(vertexShader, (GLsizei)infoLog.size(), &length, &infoLog[0]);
+        infoLog.resize(length);
+
+        LOG_WARNING("Shader compilation failed: {}", infoLog);
+    }
+
 	glCompileShader(vertexShader);
 
     // fragment shader
+	std::string fs_source;
+	neu::file::ReadTextFile("Shaders/basic.frag", fs_source);
+	const char* fs_cstr = fs_source.c_str();
+
+	GLuint fragmentShader;
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
+	glShaderSource(fragmentShader, 1, &fs_cstr, NULL);
+	glCompileShader(fragmentShader);
+
+    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        std::string infoLog(512, '\0');  // pre-allocate space
+        GLsizei length;
+        glGetShaderInfoLog(fragmentShader, (GLsizei)infoLog.size(), &length, &infoLog[0]);
+        infoLog.resize(length);
+
+        LOG_WARNING("Shader compilation failed: {}", infoLog);
+    }
+
+    // shader program
+    GLuint shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
+	glUseProgram(shaderProgram);
+
+    // uniform
+    GLint uniform = glGetUniformLocation(shaderProgram, "u_time");
+    ASSERT(uniform != 1);
+
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+    if (!success)
+    {
+        std::string infoLog(512, '\0');  // pre-allocate space
+        GLsizei length;
+        glGetProgramInfoLog(shaderProgram, (GLsizei)infoLog.size(), &length, &infoLog[0]);
+        infoLog.resize(length);
+
+        LOG_WARNING("Shader Link compilation failed: {}", infoLog);
+    }
 
     // MAIN LOOP
     while (!quit) {
@@ -72,14 +138,16 @@ int main(int argc, char* argv[]) {
         float angle = neu::GetEngine().GetTime().GetTime() * 50;
 
         if (neu::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_ESCAPE)) quit = true;
+		glUniform1f(uniform, neu::GetEngine().GetTime().GetTime());
 
         // draw
-            
-        glPushMatrix();
+		glBindVertexArray(vao);
+		glDrawArrays(GL_TRIANGLES, 0, (GLsizei)points.size());
+        /*glPushMatrix();
         
-        glTranslatef(position.x, position.y, 0);
         glScalef(neu::math::cos(angle * 0.05), neu::math::sin(angle * 0.05), 1.0);
         glRotatef(angle, 0, 0, 1);
+        glTranslatef(position.x, position.y, 0);
 
         glBegin(GL_TRIANGLES);
         for (int i = 0; i < points.size(); i++) {
@@ -89,7 +157,7 @@ int main(int argc, char* argv[]) {
             
 		}
         glEnd();
-        glPopMatrix();
+        glPopMatrix();*/
         
 
 

@@ -1,12 +1,14 @@
 #version 460 core
 
-out vec4 fragColor;
+in vec3 v_color;
+out vec4 f_color;
 
-layout (location = 0) in vec3 position;
-//layout (location = 1) in vec3 color;
+uniform float u_time;
+//layout (location = 1) in vec4 color;
 //layout (location = 2) in vec2 uv;
 
 void main(){
-	fragColor = vec4(1,0,0,1);
+	float offset = sin(u_time + gl_FragCoord.y);
+	f_color = vec4(v_color % offset, 1.0);
 }
 
