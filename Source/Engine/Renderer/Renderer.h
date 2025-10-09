@@ -2,9 +2,12 @@
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
+#include <glad/glad.h>
 #include <iostream>
 
 namespace neu {
+
+	
 	/// <summary>
 	/// Main rendering system that manages the SDL window and renderer.
 	/// Provides methods for initializing the graphics system, clearing the screen,
@@ -151,5 +154,7 @@ namespace neu {
 
 		// SDL renderer handle used for all drawing operations
 		SDL_Renderer* m_renderer = nullptr;
+
+		SDL_GLContext m_context = nullptr;
 	};
 }
