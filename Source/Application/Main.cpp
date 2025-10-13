@@ -138,11 +138,13 @@ int main(int argc, char* argv[]) {
         float angle = neu::GetEngine().GetTime().GetTime() * 50;
 
         if (neu::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_ESCAPE)) quit = true;
-		glUniform1f(uniform, neu::GetEngine().GetTime().GetTime());
+		
 
         // draw
+        glUniform1f(uniform, neu::GetEngine().GetTime().GetTime());
 		glBindVertexArray(vao);
 		glDrawArrays(GL_TRIANGLES, 0, (GLsizei)points.size());
+
         /*glPushMatrix();
         
         glScalef(neu::math::cos(angle * 0.05), neu::math::sin(angle * 0.05), 1.0);
