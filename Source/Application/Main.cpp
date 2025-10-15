@@ -115,6 +115,9 @@ int main(int argc, char* argv[]) {
 
     */
 
+    auto vs = neu::Resources().Get<neu::Shader>("shaders/basic.vert", GL_VERTEX_SHADER);
+    auto fs = neu::Resources().Get<neu::Shader>("shaders/basic.frag", GL_FRAGMENT_SHADER);
+
     // vertex shader
     std::string vs_source;
     neu::file::ReadTextFile("Shaders/basic.vert", vs_source);

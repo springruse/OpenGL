@@ -8,7 +8,7 @@ namespace neu {
 		bool Load(const std::string& filename, GLuint shaderType);
 
 	public:
-		GLuint m_shader = 0;
+		GLuint m_shader;
 	};
 
 
