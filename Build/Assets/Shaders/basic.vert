@@ -12,6 +12,7 @@ out vec3 v_color;
 out vec2 v_texcoord;
 
 uniform float u_time;
+uniform mat4 u_model;
 
 void main(){
 	v_color = a_color;
@@ -20,7 +21,7 @@ void main(){
 	//float offset = sin(u_time * frequency + position.y) * amplitude;
 
 	// position.x += offset;
-	gl_Position = vec4(a_position, 1.0);
+	gl_Position = u_model * vec4(a_position, 1.0);
 
 	//gl_Position = vec4(a_position * sin(u_time), 1.0);
 }
