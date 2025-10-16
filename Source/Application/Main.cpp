@@ -9,7 +9,6 @@ int main(int argc, char* argv[]) {
 
     // initialize scene
 
-
     SDL_Event e;
     bool quit = false;
     std::vector<neu::vec3> points;
@@ -76,7 +75,6 @@ int main(int argc, char* argv[]) {
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, color));
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, textcoords));
 
-
     /*
     GLuint vbo[3];
 	glGenBuffers(3, vbo);
@@ -115,8 +113,8 @@ int main(int argc, char* argv[]) {
 
     */
 
-    auto vs = neu::Resources().Get<neu::Shader>("shaders/basic.vert", GL_VERTEX_SHADER);
-    auto fs = neu::Resources().Get<neu::Shader>("shaders/basic.frag", GL_FRAGMENT_SHADER);
+    auto vs = neu::Resources().Get<neu::Shader>("Shaders/basic.vert", GL_VERTEX_SHADER);
+    auto fs = neu::Resources().Get<neu::Shader>("Shaders/basic.frag", GL_FRAGMENT_SHADER);
 
     // vertex shader
     std::string vs_source;
