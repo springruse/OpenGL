@@ -39,28 +39,6 @@ int main(int argc, char* argv[]) {
 				neu::vec2 textcoords;
     };
 
-    std::vector<Vertex> vertices{
-        {{-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-        {{ -0.5f, 0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f}},
-        {{ 0.5f,  0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
-        {{ 0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f}},
-    };
-
-    std::vector<GLuint> indices{
-        0, 1, 2,
-        0, 2, 3
-    };
-
-
-    // vertex buffer object
-	/*neu::res_t<neu::VertexBuffer> vertexBuffer = std::make_shared<neu::VertexBuffer>();
-
-	vertexBuffer->CreateVertexBuffer(sizeof(Vertex) * vertices.size(), vertices.size(), vertices.data());
-    vertexBuffer->CreateIndexBuffer(GL_UNSIGNED_INT, indices.size(), indices.data());
-    vertexBuffer->SetAttribute(0, 3, sizeof(Vertex), offsetof(Vertex, position));
-    vertexBuffer->SetAttribute(1, 3, sizeof(Vertex), offsetof(Vertex, color));
-    vertexBuffer->SetAttribute(2, 2, sizeof(Vertex), offsetof(Vertex, textcoords));*/
-
 	// shaders
     auto vs = neu::Resources().Get<neu::Shader>("Shaders/basic.vert", GL_VERTEX_SHADER);
     auto fs = neu::Resources().Get<neu::Shader>("Shaders/basic.frag", GL_FRAGMENT_SHADER);
@@ -101,6 +79,8 @@ int main(int argc, char* argv[]) {
         model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
         model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         program->SetUniform("u_model", model);
+
+
 
         //view matrix
         eye.x += neu::GetEngine().GetInput().GetMouseDelta().x * 0.01f;
