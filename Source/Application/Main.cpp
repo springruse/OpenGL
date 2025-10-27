@@ -73,7 +73,18 @@ int main(int argc, char* argv[]) {
         if (neu::GetEngine().GetInput().GetKeyPressed(SDL_SCANCODE_ESCAPE)) quit = true;
 	
         // draw
-        
+
+        // start new ImGui frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplSDL3_NewFrame();
+        ImGui::NewFrame();
+
+        // set ImGui
+        ImGui::Begin("Editor");
+        ImGui::Text("Hello World");
+        ImGui::Text("Press 'Esc' to quit.");
+        ImGui::End();
+
         glm::mat4 model = glm::mat4(1.0f);
 
         // model matrix
@@ -104,10 +115,16 @@ int main(int argc, char* argv[]) {
         glm::mat4 projection = glm::perspective(glm::radians(90.0f), aspect, 0.01f, 100.0f);
         program->SetUniform("u_projection", projection);
 
-        /*vertexBuffer->Draw();*/
 
         neu::GetEngine().GetRenderer().Clear();
+
         model3d->Draw(GL_TRIANGLES);
+
+        // draw ImGui
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
         neu::GetEngine().GetRenderer().Present();
     }
 
