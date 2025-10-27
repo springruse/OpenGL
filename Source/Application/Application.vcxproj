@@ -203,6 +203,7 @@
     <ClInclude Include="ApplicationPCH.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\Materials\spot.mat" />
     <None Include="..\..\Build\Assets\Meshes\enemy.msh" />
     <None Include="..\..\Build\Assets\Platformer\Scenes\level.json" />
     <None Include="..\..\Build\Assets\Platformer\Scenes\prototypes.json" />
@@ -221,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Build\Assets\Textures\beast.png" />
+    <Image Include="..\..\Build\Assets\Textures\cow.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

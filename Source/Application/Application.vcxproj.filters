@@ -20,6 +20,9 @@
     <Filter Include="Assets\Textures">
       <UniqueIdentifier>{89a8e1e9-c268-458e-99d7-04f179a2a33b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Materials">
+      <UniqueIdentifier>{d36de1ea-8e39-49d8-9160-f5a8f77cbc9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -65,9 +68,15 @@
     <None Include="..\..\Build\Assets\Shaders\basic_lit.prong">
       <Filter>Assets\Shaders</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Materials\spot.mat">
+      <Filter>Assets\Materials</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Build\Assets\Textures\beast.png">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="..\..\Build\Assets\Textures\cow.png">
       <Filter>Assets\Textures</Filter>
     </Image>
   </ItemGroup>
