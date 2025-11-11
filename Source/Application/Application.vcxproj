@@ -203,6 +203,8 @@
     <ClInclude Include="ApplicationPCH.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\Materials\crate.mat" />
+    <None Include="..\..\Build\Assets\Materials\floor.mat" />
     <None Include="..\..\Build\Assets\Materials\halloween.mat" />
     <None Include="..\..\Build\Assets\Materials\spot.mat" />
     <None Include="..\..\Build\Assets\Meshes\enemy.msh" />
@@ -212,6 +214,7 @@
     <None Include="..\..\Build\Assets\scene.json" />
     <None Include="..\..\Build\Assets\Scenes\scene01.json" />
     <None Include="..\..\Build\Assets\Scenes\scene02.json" />
+    <None Include="..\..\Build\Assets\Scenes\scene03.json" />
     <None Include="..\..\Build\Assets\Shaders\basic.frag" />
     <None Include="..\..\Build\Assets\Shaders\basic.vert" />
     <None Include="..\..\Build\Assets\Shaders\basic_lit.frag" />
@@ -230,6 +233,10 @@
     <Image Include="..\..\Build\Assets\Textures\beast.png" />
     <Image Include="..\..\Build\Assets\Textures\cow.png" />
     <Image Include="..\..\Build\Assets\Textures\halloween.png" />
+    <Image Include="..\..\Build\Assets\Textures\space_crate_base.png" />
+    <Image Include="..\..\Build\Assets\Textures\space_crate_emissive.png" />
+    <Image Include="..\..\Build\Assets\Textures\space_crate_normal.png" />
+    <Image Include="..\..\Build\Assets\Textures\space_crate_specular.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

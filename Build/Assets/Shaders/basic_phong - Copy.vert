@@ -3,12 +3,10 @@
 layout (location = 0) in vec3 a_position;
 layout (location = 1) in vec2 a_texcoord;
 layout (location = 2) in vec3 a_normal;
- out VS_OUT
-{
-	out vec2 texcoord;
-	out vec3 position;
-	out vec3 normal;
-}vs_out;
+ 
+out vec2 v_texcoord;
+out vec3 v_position;
+out vec3 v_normal;
  
 uniform mat4 u_model;
 uniform mat4 u_view;
@@ -16,40 +14,32 @@ uniform mat4 u_projection;
 
 uniform vec3 u_ambient_light; 
 
-struct Light
+uniform struct Light
 {
-	int type;
 	vec3 position;
 	vec3 color;
-	vec3 direction;
-	float range;
-	float intensity;
-	float outerSpotAngle;
-	float innerSpotAngle;
 } u_light;
 
 uniform struct Material
 {
+	sampler2D baseMap;
 	vec3 baseColor;
-	vec3 emissiveColor;
 
 	float shininess;
 	vec2 tiling;
 	vec2 offset;
-
-	uint parameters;
 } u_material;
 
 
 void main()
 {
-	vs_out.texcoord = a_texcoord * u_material.tiling + u_material.offset;
+	v_texcoord = a_texcoord * u_material.tiling + u_material.offset;
 	
 	mat4 model_view = u_view * u_model;
 	vec4 view_pos = model_view * vec4(a_position, 1.0);
-	vs_out.position = view_pos.xyz;
+	v_position = view_pos.xyz;
 
-	vs_out.normal = normalize(mat3(model_view) * a_normal);
+	v_normal = normalize(mat3(model_view) * a_normal);
 	
 	gl_Position = u_projection * view_pos;
 }
