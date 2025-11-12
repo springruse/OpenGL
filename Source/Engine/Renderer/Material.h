@@ -13,7 +13,9 @@ namespace neu {
 			None		= 0,	
 			BaseMap		= (1<<0),
 			SpecularMap	= (1<<1),
-			EmissiveMap	= (1<<2)
+			EmissiveMap	= (1<<2),
+			NormalMap	= (1<<3),
+			CubeMap		= (1<<4)
 		};
 
 
@@ -38,8 +40,10 @@ namespace neu {
 		res_t <Texture> baseMap;
 		res_t <Texture> specularMap;
 		res_t <Texture> emissiveMap;
+		res_t <Texture> normalMap;
+		res_t <Texture> cubeMap;
 		
-		Parameters parameters;
+		Parameters parameters = Parameters::None;
 
 	};
 

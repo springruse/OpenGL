@@ -7,11 +7,13 @@
 #define	BASE_MAP		 (1<<0)
 #define	SPECULAR_MAP	 (1<<1)
 #define	EMISSIVE_MAP	 (1<<2)
+#define	NORMAL_MAP		 (1<<3)
 
 in VS_OUT{
 	in vec2 texcoord;
 	in vec3 position;
 	in vec3 normal;
+	mat3 tbn;
 }fs_in;
 
 out vec4 f_color;
@@ -50,6 +52,7 @@ uniform Material u_material;
 uniform sampler2D u_baseMap;
 uniform sampler2D u_specularMap;
 uniform sampler2D u_emissiveMap;
+uniform sampler2D u_normalMap;
 
 float calculateAttenuation(in float light_distance, in float range)
 {	
@@ -116,10 +119,26 @@ vec3 calculateLight(in Light light, in vec3 position,in vec3 normal, in float sp
 	return (diffuse + specular) * light.intensity * attenuation;
 }
 
+vec3 calculateNormal()
+{
+	// generate the normals from the normal map
+	vec3 normal = texture(u_normalMap, fs_in.texcoord).rgb;
+	// convert rgb normal (0 <-> 1) to xyx (-1 <-> 1)
+	normal = normalize(normal * 2.0 - 1.0);
+	// transform normals to model view space
+	normal = normalize(fs_in.tbn * normal);
+
+	return normal;
+}
+
 void main()
 {
 	//vec3 color = calculateLight(fs_in.position, fs_in.normal);
 	//f_color = texture(u_material.baseMap, fs_in.texcoord) * vec4(color, 1);
+
+	vec3 normal = ((u_material.parameters & NORMAL_MAP) != 0u)
+	? calculateNormal()
+	: fs_in.normal;
 
 	float specularMask = ((u_material.parameters & SPECULAR_MAP) != 0u)
 		? texture(u_specularMap, fs_in.texcoord).r
@@ -128,8 +147,8 @@ void main()
 	vec3 color = u_ambient_light;
 	for (int i = 0; i < u_numLights; i++)
 	{
-		color += calculateLight(u_lights[i], fs_in.position, fs_in.normal, specularMask);
-	}
+		color += calculateLight(u_lights[i], fs_in.position, normal, specularMask);
+	}	
 
 	vec4 emissive = ((u_material.parameters & EMISSIVE_MAP) != 0u)
 		? texture(u_emissiveMap, fs_in.texcoord) * vec4(u_material.emissiveColor, 1)

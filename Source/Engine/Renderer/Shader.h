@@ -11,6 +11,4 @@ namespace neu {
 		GLuint m_shader;
 	};
 
-
-
 }
