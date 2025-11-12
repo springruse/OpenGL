@@ -27,7 +27,7 @@ namespace neu {
 		}
 
 		for (size_t i = 0; i < filename_split.size(); i++) {
-			SDL_Surface* surface = IMG_Load(filenames.c_str());
+			SDL_Surface* surface = IMG_Load(filename_split[i].c_str());
 			if (!surface) {
 				LOG_ERROR("Could not load image: {}", filenames);
 				return false;

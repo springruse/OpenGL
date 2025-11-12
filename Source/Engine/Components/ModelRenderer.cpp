@@ -35,7 +35,6 @@ namespace neu {
 
 		std::string cullFaceName;
 		SERIAL_READ_NAME(value, "cullFace", cullFaceName);
-
 		if (equalsIgnoreCase(cullFaceName, "front")) cullFace = GL_FRONT;
 	}
 

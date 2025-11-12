@@ -1,6 +1,24 @@
 {
 	"actors": [
 		{
+			"name": "skybox",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 0, 0 ],
+				"rotation": [ 0, 0, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "ModelRenderer",
+					"model": "models/cube.obj",
+					"material": "materials/skybox.mat",
+					"enableDepth": false,
+					"cullFace": "front"
+				}
+			]
+		},
+		{
 			"name": "box",
 			"persistent": true,
 			"transform": {
@@ -13,23 +31,6 @@
 					"type": "ModelRenderer",
 					"model": "models/cube.obj",
 					"material": "materials/crate.mat"
-				}
-			]
-		},
-		{
-			"name": "skybox",
-			"persistent": true,
-			"transform": {
-				"position": [ 0, 0, 0 ],
-				"rotation": [ 0, 0, 0 ],
-				"scale": [ 1, 1, 1 ]
-			},
-			"components": [
-				{
-					"type": "ModelRenderer",
-					"model": "models/cube.obj",
-					"material": "materials/skybox.mat"
-
 				}
 			]
 		},
