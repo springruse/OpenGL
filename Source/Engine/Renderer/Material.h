@@ -42,6 +42,8 @@ namespace neu {
 		res_t <Texture> emissiveMap;
 		res_t <Texture> normalMap;
 		res_t <Texture> cubeMap;
+
+		float ior{ 1.3f };
 		
 		Parameters parameters = Parameters::None;
 
