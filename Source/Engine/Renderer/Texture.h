@@ -15,6 +15,18 @@ namespace neu {
 	/// </summary>
 	class Texture : public Resource {
 	public:
+		enum class Filter {
+			Nearest,
+			Linear
+		};
+
+		enum class Wrap {
+			Repeat,
+			RepeatMirror,
+			ClampEdge
+		};
+
+	public:
 		Texture() = default;
 		~Texture();
 
@@ -29,6 +41,8 @@ namespace neu {
 
 		void SetActive(GLuint unit) { glActiveTexture(unit); }
 		void Bind() { glBindTexture(m_target, m_texture); }
+
+		void UpdateGUI() override;
 
 		/// <summary>
 		/// Gets the dimensions of the texture in pixels.

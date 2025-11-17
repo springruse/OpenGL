@@ -40,7 +40,16 @@ namespace neu {
 
 	void ModelRenderer::UpdateGUI()
 	{
-
+		if (model) {
+			ImGui::Text("Model: %s", model->name.c_str());
+			Editor::GetDialogResource<Model>(model, "ModelDialog", "Open model", "Model file (*.obj;*.fbx){.obj,.fbx},.*");
+			ImGui::Separator();
+		}
+		if (material) {
+			ImGui::Text("Material: %s", material->name.c_str());
+			Editor::GetDialogResource<Material>(material, "MaterialDialog", "Open Material", "Material file (*.mat){.mat},.*");
+			ImGui::Separator();
+		}
 	}
 
 }

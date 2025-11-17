@@ -115,10 +115,28 @@ namespace neu {
 			ImGui::Text("Name: %s", name.c_str());
 			ImGui::Text("Shader: %s", program->name.c_str());
 
-			if (baseMap)ImGui::Text("BaseMap: %s", baseMap->name.c_str());
-			if (specularMap)ImGui::Text("specularMap: %s", specularMap->name.c_str());
-			if (emissiveMap)ImGui::Text("emissiveMap: %s", emissiveMap->name.c_str());
+			if (baseMap) {
+				ImGui::Text("BaseMap: %s", baseMap->name.c_str());
+				Editor::ShowTexture(*baseMap, 32, 32);
+				Editor::GetDialogResource<Texture>(baseMap, "BaseMapDialog", "Open_texture", "Image (*.png;*jpg;*.bmp;*.jpeg;*.tga){.png,.jpg,.bmp,.jpeg,.tga},.*");
+				ImGui::Separator();
+			}
+			
+			if (specularMap) {
+				ImGui::Text("specularMap: %s", specularMap->name.c_str());
+				Editor::ShowTexture(*specularMap, 32, 32);
+				Editor::GetDialogResource<Texture>(specularMap, "SpecularMapDialog", "Open_texture", "Image (*.png;*jpg;*.bmp;*.jpeg;*.tga){.png,.jpg,.bmp,.jpeg,.tga},.*");
+				ImGui::Separator();
+			}
+			
+			if (emissiveMap) {
+				ImGui::Text("emissiveMap: %s", emissiveMap->name.c_str());
+				Editor::ShowTexture(*emissiveMap, 32, 32);
+				Editor::GetDialogResource<Texture>(emissiveMap, "EmissiveMapDialog", "Open_texture", "Image (*.png;*jpg;*.bmp;*.jpeg;*.tga){.png,.jpg,.bmp,.jpeg,.tga},.*");
+				ImGui::Separator();
+			}
 			//if (cubeMap)ImGui::Text("cubeMap: %s", cubeMap->name.c_str());
+			ImGui::Separator();
 
 			ImGui::ColorEdit3("Emissive Color", glm::value_ptr(emissiveColor));
 			ImGui::ColorEdit3("Color", glm::value_ptr(baseColor));

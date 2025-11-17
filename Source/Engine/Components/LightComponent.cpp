@@ -43,7 +43,7 @@ namespace neu {
 		ImGui::DragFloat("Intensity", &intensity, 0.1f, 0.0f);
 
 		if (lightType != LightType::Directional) {
-			ImGui::DragFloat("Range", &range, 0.1, 0.0f);
+			ImGui::DragFloat("Range", &range, 0.1f, 0.0f);
 		}
 
 		if (lightType == LightType::Spot) {
