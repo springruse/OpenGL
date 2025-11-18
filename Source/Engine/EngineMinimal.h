@@ -52,6 +52,7 @@
 #include "Renderer/VertexBuffer.h"
 #include "Renderer/Model.h"
 #include "Renderer/Material.h"
+#include "Renderer/RenderTexture.h"
 
 //componenets
 #include "Components/ModelRenderer.h"

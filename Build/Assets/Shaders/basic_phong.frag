@@ -155,5 +155,4 @@ void main()
 		: vec4(u_material.emissiveColor, 1);
 
 	f_color = texture(u_baseMap, fs_in.texcoord) * vec4(color, 1) + emissive;
-
 }

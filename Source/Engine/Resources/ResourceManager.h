@@ -69,6 +69,9 @@ namespace neu {
             requires std::derived_from<T, Resource>
         std::vector<T*>GetByType();
 
+        template<typename T = Resource>
+            requires std::derived_from<T, Resource>
+        bool AddResource(const std::string& name, const res_t<T>& resource);
 
 
     private:
@@ -158,12 +161,29 @@ namespace neu {
 
         for (auto& resource : m_resources) {
             auto result = dynamic_cast<T*>(resource.second.get());
+
             if (result) {
                 results.push_back(result);
             }
         }
 
         return results;
+    }
+
+    template<typename T>
+        requires std::derived_from<T, Resource>
+    inline bool ResourceManager::AddResource(const std::string& name, const res_t<T>& resource)
+    {
+        std::string key = toLower(name);
+
+        auto iterate = m_resources.find(key);
+        if (iterate != m_resources.end()) {
+            LOG_WARNING("Resource already exists {}", key);
+            return false;
+        }
+        resource->name = key;
+        m_resources[name] = resource;
+        return true;
     }
 
     /// <summary>

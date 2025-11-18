@@ -8,10 +8,14 @@ int main(int argc, char* argv[]) {
     LOG_INFO("initialize engine...");
     neu::GetEngine().Initialize();
 
-    // initialize scene
-
     SDL_Event e;
     bool quit = false;
+
+    // initialize scene
+    auto renderTexture = std::make_shared<neu::RenderTexture>();
+    renderTexture->Create(512, 512);
+    neu::Resources().AddResource("renderTexture", renderTexture);
+
 
     auto scene = std::make_unique<neu::Scene>();
     scene->Load("scenes/scene03.json");
