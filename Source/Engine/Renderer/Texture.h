@@ -50,13 +50,13 @@ namespace neu {
 		/// <returns>A vec2 containing the width and height of the texture</returns>
 		glm::ivec2 GetSize() { return m_size;  }
 
+	public:
 		// Allow Renderer class to access the texture for drawing operations
 		friend class Renderer;
 		GLuint m_texture{ 0 };           
 		GLenum m_target = GL_TEXTURE_2D;
 
 		
-	private:
 		// The dimensions of the texture in pixels
 		glm::ivec2 m_size{ 0, 0 };
 	};

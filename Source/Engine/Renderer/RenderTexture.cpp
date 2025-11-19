@@ -12,9 +12,12 @@ namespace neu {
     }
 
     bool RenderTexture::Create(int width, int height, bool depth) {
-        auto m_size = GetSize();
+        m_size.x = width;
+        m_size.y = height;
 
         // framebuffer
+        glGenFramebuffers(1, &m_fbo);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);
 
         // color texture
         glGenTextures(1, &m_texture);
