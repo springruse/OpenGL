@@ -69,6 +69,7 @@ namespace neu {
 
 		ImGui::ColorEdit3("Background", glm::value_ptr(backgroundColor));
 		ImGui::Checkbox("Clear Color", &clearColorBuffer);
+		ImGui::Checkbox("Clear Depth", &clearDepthBuffer);
 	}
 
 }

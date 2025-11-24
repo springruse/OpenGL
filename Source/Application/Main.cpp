@@ -16,6 +16,9 @@ int main(int argc, char* argv[]) {
     renderTexture->Create(512, 512);
     neu::Resources().AddResource("renderTexture", renderTexture);
 
+    renderTexture = std::make_shared<neu::RenderTexture>();
+    renderTexture->Create(1024, 1024);
+    neu::Resources().AddResource("postprocessTexture", renderTexture);
 
     auto scene = std::make_unique<neu::Scene>();
     scene->Load("scenes/scene03.json");
@@ -43,6 +46,7 @@ int main(int argc, char* argv[]) {
         editor->UpdateGUI(*scene);
 
         scene->Draw(neu::GetEngine().GetRenderer());
+
         // draw ImGui
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

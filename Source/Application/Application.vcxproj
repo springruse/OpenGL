@@ -207,6 +207,7 @@
     <None Include="..\..\Build\Assets\Materials\floor.mat" />
     <None Include="..\..\Build\Assets\Materials\halloween.mat" />
     <None Include="..\..\Build\Assets\Materials\ogre.mat" />
+    <None Include="..\..\Build\Assets\Materials\postprocess.mat" />
     <None Include="..\..\Build\Assets\Materials\reflection.mat" />
     <None Include="..\..\Build\Assets\Materials\refraction.mat" />
     <None Include="..\..\Build\Assets\Materials\rtt.mat" />
@@ -229,6 +230,9 @@
     <None Include="..\..\Build\Assets\Shaders\basic_phong.frag" />
     <None Include="..\..\Build\Assets\Shaders\basic_phong.prong" />
     <None Include="..\..\Build\Assets\Shaders\basic_phong.vert" />
+    <None Include="..\..\Build\Assets\Shaders\postprocess.frag" />
+    <None Include="..\..\Build\Assets\Shaders\postprocess.prog" />
+    <None Include="..\..\Build\Assets\Shaders\postprocess.vert" />
     <None Include="..\..\Build\Assets\Shaders\reflection.prong" />
     <None Include="..\..\Build\Assets\Shaders\reflection.vert" />
     <None Include="..\..\Build\Assets\Shaders\refraction.prong" />
