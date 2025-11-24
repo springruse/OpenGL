@@ -121,6 +121,7 @@ namespace neu {
                 glViewport(0, 0, camera->outputTexture->GetSize().x, camera->outputTexture->GetSize().y);
             }
             camera->Clear();
+
             DrawPass(renderer, programs, lights, camera);
             if (renderToTexture) {
                 camera->outputTexture->UnbindFramebuffer();

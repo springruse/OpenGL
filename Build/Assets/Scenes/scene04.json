@@ -1,0 +1,150 @@
+{
+	"actors": [
+		{
+			"name": "box",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 0, 0 ],
+				"rotation": [ 0, 180, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "ModelRenderer",
+					"model": "models/cube.obj",
+					"material": "materials/crate.mat"
+				}
+			]
+		},
+		{
+			"name": "window",
+			"persistent": true,
+			"transform": {
+				"position": [ 2, 0, 0 ],
+				"rotation": [ 0, 0, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "ModelRenderer",
+					"model": "models/quad.obj",
+					"material": "materials/rtt.mat"
+				}
+			]
+		},
+		{
+			"name": "cow",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 1.5, 0 ],
+				"rotation": [ 0, 180, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "ModelRenderer",
+					"model": "models/cow.obj",
+					"material": "materials/spot.mat"
+				},
+				{
+					"type": "RotationComponent",
+					"rotate": [ 0, 90, 0 ]
+				}
+			]
+		},
+		{
+			"name": "plane",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, -1, 0 ],
+				"rotation": [ 0, 0, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "ModelRenderer",
+					"model": "models/plane.obj",
+					"material": "materials/rocks.mat"
+				}
+			]
+		},
+		{
+			"name": "postprocess",
+			"active": false,
+			"persistent": true,
+			"transform": {
+				"position": [ 0, -1, 0 ],
+				"rotation": [ -90, 0, 0 ],
+				"scale": [ 0.1, 0.1, 0.1 ]
+			},
+			"components": [
+				{
+					"type": "ModelRenderer",
+					"model": "models/quad.obj",
+					"material": "materials/postprocess.mat"
+				}
+			]
+		},
+		{
+			"name": "camera_rtt",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 0, 2 ],
+				"rotation": [ 90, 0, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"outputTexture": "renderTexture"
+				},
+				{
+					"type": "FirstPersonController",
+					"speed": 5,
+					"sensitivity": 0.2
+				}
+			]
+		},
+		{
+			"name": "camera",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 0, 2 ],
+				"rotation": [ 0, 0, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"outputTexture": "postprocessTexture"
+				},
+				{
+					"type": "PostProcessComponent"
+				},
+				{
+					"type": "FirstPersonController",
+					"speed": 5,
+					"sensitivity": 0.2
+				}
+			]
+		},
+		{
+			"name": "light",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 10, 0 ],
+				"rotation": [ -90, 0, 0 ],
+				"scale": [ 1, 1, 1 ]
+			},
+			"components": [
+				{
+					"type": "LightComponent",
+					"lightType": "directional",
+					"color": [ 1, 1, 1 ],
+					"intensity": [ 1 ],
+					"range": [ 20 ]
+				}
+			]
+		}
+	]
+}
