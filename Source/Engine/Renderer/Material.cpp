@@ -47,6 +47,12 @@ namespace neu {
 
 		if(!cubeMapName.empty()) cubeMap = Resources().Get<CubeMap>(cubeMapName);
 
+		//shadowmap
+		std::string shadowMapName;
+		SERIAL_READ_NAME(document, "shadowMap", shadowMapName);
+
+		if(!shadowMapName.empty()) shadowMap = Resources().Get<Texture>(shadowMapName);
+
 		//shininess
 		SERIAL_READ(document, shininess);
 
@@ -97,6 +103,12 @@ namespace neu {
 			cubeMap->Bind();
 			program->SetUniform("u_cubeMap", 4);
 			parameters = (Parameters)((uint32_t)parameters | (uint32_t)Parameters::CubeMap);
+		}
+		if (shadowMap) {
+			shadowMap->SetActive(GL_TEXTURE5);
+			shadowMap->Bind();
+			program->SetUniform("u_shadowMap", 5);
+			parameters = (Parameters)((uint32_t)parameters | (uint32_t)Parameters::ShadowMap);
 		}
 
 		program->SetUniform("u_material.shininess", shininess);

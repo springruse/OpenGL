@@ -23,7 +23,9 @@ namespace neu {
 		float range{ 10 };
 		LightType lightType = LightType::Point;
 		float innerSpotAngle = 30.0f;
-		float outerSpotAngle = 0.0f;
+		float outerSpotAngle = 30.0f;
+
+		bool shadowCaster{ false };
 
 		// Inherited via GUI
 		void UpdateGUI() override;

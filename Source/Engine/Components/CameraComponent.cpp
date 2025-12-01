@@ -7,7 +7,7 @@ namespace neu {
 	void CameraComponent::Update(float dt)
 	{
 		view = (shadowCamera)
-			? glm::lookAt(owner->transform.position, owner->transform.position - owner->transform.Forward(), owner->transform.Up())
+			? glm::lookAt(owner->transform.position, owner->transform.position + owner->transform.Forward(), owner->transform.Up())
 			: glm::lookAt(owner->transform.position, owner->transform.position + owner->transform.Forward(), owner->transform.Up());
 
 		projection = (projectionType == ProjectionType::Perspective)
@@ -62,7 +62,7 @@ namespace neu {
 		SERIAL_READ(value, shadowCamera);
 
 		std::string projectionTypeName;
-		SERIAL_READ_NAME(value, "ProjectionType", projectionTypeName);
+		SERIAL_READ_NAME(value, "projectionType", projectionTypeName);
 		if (!projectionTypeName.empty() && equalsIgnoreCase(projectionTypeName, "orthographic")) {
 			projectionType = ProjectionType::Orthographic;
 		}
