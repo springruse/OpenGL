@@ -150,7 +150,6 @@ The renderer supports custom GLSL shaders, allowing users to implement their own
 
 ### Phong Shading
 <img width="713" height="728" alt="Screenshot 2025-12-12 123625" src="https://github.com/user-attachments/assets/b2055570-cff7-4f75-892c-54abd3c8461b" />
-
 *Cow with Phong shading showing improved specular highlights*
 
 ### Post-Processing Effects
