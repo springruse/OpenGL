@@ -145,20 +145,20 @@ The renderer supports custom GLSL shaders, allowing users to implement their own
 *Below are examples of the renderer's capabilities.*
 
 ### Gouraud Shading
-![Gouraud Shading Example](images/gouraud_example.png)
+(images/gouraud_example.png)
 *Sphere rendered with Gouraud shading demonstrating per-vertex lighting (no pic)*
 
 ### Phong Shading
-![Phong Shading Example]<img width="713" height="728" alt="Screenshot 2025-12-12 123625" src="https://github.com/user-attachments/assets/b2055570-cff7-4f75-892c-54abd3c8461b" />
+<img width="713" height="728" alt="Screenshot 2025-12-12 123625" src="https://github.com/user-attachments/assets/b2055570-cff7-4f75-892c-54abd3c8461b" />
 
 *Cow with Phong shading showing improved specular highlights*
 
 ### Post-Processing Effects
-![Post-Processing Example]<img width="592" height="649" alt="Screenshot 2025-12-12 123419" src="https://github.com/user-attachments/assets/9cc3dca3-6dab-4020-86d5-44f20911a9da" />
+<img width="592" height="649" alt="Screenshot 2025-12-12 123419" src="https://github.com/user-attachments/assets/9cc3dca3-6dab-4020-86d5-44f20911a9da" />
 *Scene with scanline, grayscale, and invert applied*
 
 ### Complex Scene
-![Complex Scene]<img width="1085" height="900" alt="Screenshot 2025-12-12 124512" src="https://github.com/user-attachments/assets/d8e934fb-5fe6-47f7-a551-893011fcb68b" />
+<img width="1085" height="900" alt="Screenshot 2025-12-12 124512" src="https://github.com/user-attachments/assets/d8e934fb-5fe6-47f7-a551-893011fcb68b" />
 *Multiple objects demonstrating the renderer's capabilities*
 
 ## Attribution
