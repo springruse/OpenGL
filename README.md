@@ -186,5 +186,5 @@ For questions, suggestions, or bug reports, please open an issue on GitHub or co
 
 ---
 
-**Author**: Your Name  
-**Project Link**: [github.com/yourusername/cpp-software-renderer](https://github.com/yourusername/cpp-software-renderer)
+**Author**: Alec Thao 
+**Project Link**: [github.com/springruse/cpp-software-renderer](https://github.com/springruse/cpp-software-renderer)
